@@ -1,4 +1,8 @@
+mustacheX=0;
+mustacheY=0;
+
 function preload(){
+    Mustache = loadImage('https://i.postimg.cc/XqpYT6pP/mustache-removebg-preview.png');
 }
 
 function setup()
@@ -22,14 +26,17 @@ function gotPoses(results)
 {
     if(results.length > 0)
     {
-        console.log(results)
-        console.log("nose x = " + results[0].pose.nose.x);
-        console.log("nose y = " + results[0].pose.nose.y);
+        console.log(results);
+        mustacheX = results[0].pose.nose.x - 15;
+        mustacheY = results[0].pose.nose.y - 5;
+        console.log("nose x = " + mustacheX);
+        console.log("nose y = " + mustacheY);
     }
 }
 
 function draw(){
 image(v, 0, 0, 300, 300);
+image(Mustache, mustacheX, mustacheY, 35, 35);
 }
 
 function take_snapshot(){
